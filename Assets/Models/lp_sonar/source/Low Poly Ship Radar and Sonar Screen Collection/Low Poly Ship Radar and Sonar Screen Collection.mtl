@@ -1,0 +1,62 @@
+# Blender 5.1.0 MTL File: 'Radar.blend'
+# www.blender.org
+
+newmtl Black_plastic
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/kusgu/Desktop/Radar/Texture/Black Plastic/Plastic006_2K-JPG_Color.jpg
+map_Ns C:/Users/kusgu/Desktop/Radar/Texture/Black Plastic/Plastic006_2K-JPG_Roughness.jpg
+
+newmtl Blue
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/kusgu/Desktop/Radar/Texture/Blue Plastic/Plastic015A_2K-JPG_Color.jpg
+map_Ns C:/Users/kusgu/Desktop/Radar/Texture/Blue Plastic/Plastic015A_2K-JPG_Roughness.jpg
+
+newmtl Gray_plastic
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/kusgu/Desktop/Radar/Texture/Gray Plastic/Plastic011_2K-JPG_Color.jpg
+map_Ns C:/Users/kusgu/Desktop/Radar/Texture/Gray Plastic/Plastic011_2K-JPG_Roughness.jpg
+
+newmtl Plastic
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/kusgu/Desktop/Radar/Texture/Black leather/Leather032_2K-JPG_Color.jpg
+map_Ns C:/Users/kusgu/Desktop/Radar/Texture/Black leather/Leather032_2K-JPG_Roughness.jpg
+
+newmtl Radar
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/kusgu/Desktop/Radar/Referans/pngtree-detailed-illustration-of-a-radar-screen-security-direction-submarine-vector-png-image_9275292.png
+
+newmtl White_Plastic
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/kusgu/Desktop/Radar/Texture/White Plastic/Plastic010_2K-JPG_Color.jpg
+map_Ns C:/Users/kusgu/Desktop/Radar/Texture/White Plastic/Plastic010_2K-JPG_Roughness.jpg
