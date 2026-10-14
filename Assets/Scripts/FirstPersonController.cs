@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
-    public Transform cameraTransform;
+    public Transform lookPivot;
     public float moveSpeed = 4f;
     public float lookSensitivity = 2f;
     public float gravity = -20f;
@@ -21,12 +21,13 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        if (CameraController.InputLocked) return;
         // Look
         float mx = Input.GetAxis("Mouse X") * lookSensitivity;
         float my = Input.GetAxis("Mouse Y") * lookSensitivity;
         transform.Rotate(0f, mx, 0f);
         pitch = Mathf.Clamp(pitch - my, -85f, 85f);
-        cameraTransform.localEulerAngles = new Vector3(pitch, 0f, 0f);
+        lookPivot.localEulerAngles = new Vector3(pitch, 0f, 0f);
 
         // Move
         Vector3 move = transform.right * Input.GetAxis("Horizontal")

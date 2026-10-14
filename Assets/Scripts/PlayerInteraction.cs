@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [Header("References")]
+    public Transform lookPivot;
+
     public float reach = 3f;
     public float holdDistance = 1.6f;
     public float carryStrength = 15f;
@@ -11,6 +14,8 @@ public class PlayerInteraction : MonoBehaviour
     Pickup held;
     Rigidbody heldRb;
     CharacterController playerCC;
+    Renderer[] heldRenderers;
+    bool [] heldRendererOriginalEnabled;
 
     public Pickup Held => held;
 
@@ -21,6 +26,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        if (held != null ) { SetHeldVisible(CameraController.IsFirstPersonActive); }
         if (Input.GetKeyDown(KeyCode.E)){ TryInteract(); }
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (held == null) return;
 
-        Vector3 target = transform.position + transform.forward * holdDistance;
+        Vector3 target = lookPivot.position + lookPivot.forward * holdDistance;
         Vector3 v = Vector3.ClampMagnitude((target - heldRb.position) * carryStrength, maxCarrySpeed);
         #if UNITY_6000_0_OR_NEWER
                 heldRb.linearVelocity = v;
@@ -48,11 +54,12 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryGrab()
     {
-        if (!Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, reach)) return;
+        if (!Physics.Raycast(lookPivot.position, lookPivot.forward, out RaycastHit hit, reach)) return;
         Pickup p = hit.collider.GetComponentInParent<Pickup>();
         if (p == null) return;
 
         held = p;
+        CacheHeldRenderers(held.gameObject);
         heldRb = p.GetComponent<Rigidbody>();
         heldRb.useGravity = false;
         SetIgnorePlayer(true);
@@ -75,7 +82,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryInteract()
     {
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, reach);
+        RaycastHit[] hits = Physics.RaycastAll(lookPivot.position, lookPivot.forward, reach);
         System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
 
         foreach (RaycastHit hit in hits)
@@ -91,6 +98,25 @@ public class PlayerInteraction : MonoBehaviour
             }
 
             if (!hit.collider.isTrigger) return;
+        }
+    }
+
+    void CacheHeldRenderers(GameObject obj)
+    {
+        heldRenderers = obj.GetComponentsInChildren<Renderer>(true);
+        heldRendererOriginalEnabled = new bool[heldRenderers.Length];
+        for (int i = 0; i < heldRenderers.Length; i++)
+            heldRendererOriginalEnabled[i] = heldRenderers[i].enabled;
+    }
+
+    void SetHeldVisible(bool visible)
+    {
+        if (heldRenderers == null) return;
+        for (int i = 0; i < heldRenderers.Length; i++)
+        {
+            bool want = visible && heldRendererOriginalEnabled[i];
+            if (heldRenderers[i].enabled != want)
+                heldRenderers[i].enabled = want;
         }
     }
 }

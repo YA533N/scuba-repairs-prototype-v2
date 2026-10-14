@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1892292300528946311}
   - component: {fileID: 6842634561406143462}
   - component: {fileID: 3786600862246555470}
-  - component: {fileID: 8484648382882644010}
   m_Layer: 0
   m_Name: test_valve
   m_TagString: Untagged
@@ -30,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -2.883, y: 1.49001, z: 2.92215}
-  m_LocalScale: {x: 0.5, y: 0.05, z: 0.5}
+  m_LocalScale: {x: 0.26, y: 0.09, z: 0.26}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8162860092728465583}
@@ -51,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5750961385253631603}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -116,22 +115,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &8484648382882644010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5750961385253631603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d4b173f955e3a42bef163171b8ff66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ValveWheel
-  prompt: Press E to turn
-  turnAxis: {x: 0, y: 1, z: 0}
-  degreesPerPress: 180
-  turnSpeed: 180
 --- !u!1001 &8557674354122932036
 PrefabInstance:
   m_ObjectHideFlags: 0
