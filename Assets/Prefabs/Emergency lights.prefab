@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 159ef4f8b9c548e499ac93cecbe55326, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
@@ -141,7 +141,8 @@ GameObject:
   - component: {fileID: 3323331978156782750}
   - component: {fileID: 8009671224127852062}
   - component: {fileID: 3674771673066114223}
-  - component: {fileID: 4574841340199237389}
+  - component: {fileID: 1504729321711668340}
+  - component: {fileID: 8733112685212576368}
   m_Layer: 0
   m_Name: Emergency lights
   m_TagString: Untagged
@@ -246,7 +247,25 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4574841340199237389
+--- !u!114 &1504729321711668340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7267822635771377984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eea22f834aafeae6aa882209203785e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlarmUnit
+  spotLights:
+  - {fileID: 6051161155053191605}
+  - {fileID: 9002358879025187806}
+  rotators:
+  - {fileID: 8733112685212576368}
+  alarmAudio: {fileID: 3422100428827563428}
+--- !u!114 &8733112685212576368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,7 +344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6420553672231867301, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
       propertyPath: m_Intensity
-      value: 55
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -6420553672231867301, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -333,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 716453618961475120, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
       propertyPath: m_Intensity
-      value: 55
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 716453618961475120, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -348,8 +367,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
+--- !u!108 &6051161155053191605 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: -6420553672231867301, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
+  m_PrefabInstance: {fileID: 8439630740263316974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8256556121102338565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
+  m_PrefabInstance: {fileID: 8439630740263316974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &9002358879025187806 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 716453618961475120, guid: 9e48e26365744e44bb26a88a194bc755, type: 3}
   m_PrefabInstance: {fileID: 8439630740263316974}
   m_PrefabAsset: {fileID: 0}

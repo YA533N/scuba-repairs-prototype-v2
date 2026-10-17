@@ -21,7 +21,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start()
     {
-        playerCC = GetComponentInParent<CharacterController>();
+        playerCC = FindAnyObjectByType<CharacterController>();
     }
 
     void Update()

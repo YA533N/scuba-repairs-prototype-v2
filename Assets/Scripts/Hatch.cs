@@ -43,7 +43,7 @@ public class Hatch : Interactable
     {
         if (!isOpen && requiresKeycard)
         {
-            var inv = player.GetComponentInParent<PlayerInventory>();
+            var inv = FindAnyObjectByType<PlayerInventory>();
             if (inv == null || !inv.HasCard(requiredCardId))
             {
                 Debug.Log("Hatch locked. Needs keycard: " + requiredCardId);

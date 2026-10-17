@@ -1,14 +1,19 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private List<string> cards = new List<string>();
+    public static event System.Action OnInventoryChanged;
+
+    private readonly HashSet<string> cards = new HashSet<string>();
 
     public bool HasCard(string id) => cards.Contains(id);
 
     public void AddCard(string id)
     {
-        if (!cards.Contains(id)) cards.Add(id);
+        if (string.IsNullOrEmpty(id)) return;
+        if (cards.Add(id)) OnInventoryChanged?.Invoke();
     }
+
+    public IEnumerable<string> Cards => cards;
 }

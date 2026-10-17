@@ -5,6 +5,8 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance { get; private set; }
 
+    public static event System.Action OnCinematicEnded;
+
     // Higher number = Brain prefers this camera.
     // Only ONE vcam should hold the highest value at a time.
     public const int PriorityInactive    = 0;
@@ -76,6 +78,7 @@ public class CameraController : MonoBehaviour
     private void RestoreDefaultView()
     {
         isCinematicActive = false;
+        OnCinematicEnded?.Invoke();
         if (isThirdPerson) SetThirdPerson();
         else SetFirstPerson();
     }

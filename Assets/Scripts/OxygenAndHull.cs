@@ -6,7 +6,6 @@ public class OxygenAndHull : MonoBehaviour
     public static OxygenAndHull Instance;
 
     public float oxygen = 100f;
-    public float hullTime = 120f;
     public float repairHullBonus = 15f;
 
     List<Hazard> activeHazards = new List<Hazard>();
@@ -20,14 +19,15 @@ public class OxygenAndHull : MonoBehaviour
         float drain = 0f;
         foreach (Hazard h in activeHazards) drain += h.oxygenDrainPerSecond;
         oxygen = Mathf.Max(0f, oxygen - drain * Time.deltaTime);
-
-        hullTime = Mathf.Max(0f, hullTime - Time.deltaTime);
     }
 
     public void RegisterHazard(Hazard h) => activeHazards.Add(h);
 
     public void OnHazardFixed()
     {
-        hullTime += repairHullBonus;
+        if (HullManager.Instance != null)
+        {
+            HullManager.Instance.AddTime(repairHullBonus);
+        }
     }
 }
