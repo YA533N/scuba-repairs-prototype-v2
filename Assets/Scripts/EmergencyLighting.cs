@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EmergencyLighting : MonoBehaviour
 {
     [Header("Lights to control")]
-    [SerializeField] private Transform lightsParent;
+    [SerializeField] private Transform[] lightsParents;
     [SerializeField] private bool includeInactive = true;
 
     [Header("Per-light randomness")]
@@ -44,12 +44,16 @@ public class EmergencyLighting : MonoBehaviour
 
     private void Awake()
     {
-        Light[] all = lightsParent.GetComponentsInChildren<Light>(includeInactive);
-        List<Light> filtered = new List<Light>();
-        foreach (Light l in all)
-            if (l.GetComponentInParent<AlarmUnit>(true) == null)
-                filtered.Add(l);
-        lights = filtered.ToArray();
+        HashSet<Light> found = new HashSet<Light>();
+        foreach (Transform parent in lightsParents)
+        {
+            if (parent == null) continue;
+            foreach (Light l in parent.GetComponentsInChildren<Light>(includeInactive))
+                if (l.GetComponentInParent<AlarmUnit>(true) == null)
+                    found.Add(l);
+        }
+        lights = new Light[found.Count];
+        found.CopyTo(lights);
 
         int n = lights.Length;
         baseColors = new Color[n];

@@ -78,9 +78,9 @@ public class CameraController : MonoBehaviour
     private void RestoreDefaultView()
     {
         isCinematicActive = false;
-        OnCinematicEnded?.Invoke();
         if (isThirdPerson) SetThirdPerson();
         else SetFirstPerson();
+        OnCinematicEnded?.Invoke();
     }
 
         public void PlayCinematic(float duration)
